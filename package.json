@@ -1,0 +1,39 @@
+{
+  "name": "proxywatch",
+  "version": "1.0.0",
+  "description": "Win32 Tray app to watch and reset system proxy settings",
+  "main": "main.js",
+  "scripts": {
+    "build": "npm run clean && tsc && copyfiles *.png ./dist/ && npm run dist",
+    "clean": "npx rimraf dist",
+    "dist": "electron-builder --win --x64"
+  },
+  "build": {
+    "appId": "proxywatch",
+    "files": [
+      "dist/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "extraMetadata": {
+      "main": "dist/main.js"
+    },
+    "win": {
+      "target": "nsis"
+    }
+  },
+  "author": "",
+  "dependencies": {
+    "auto-launch": "^5.0.6"
+  },
+  "devDependencies": {
+    "@types/auto-launch": "^5.0.5",
+    "@types/electron": "^1.6.10",
+    "@types/node": "^20.10.6",
+    "copyfiles": "^2.4.1",
+    "electron": "^28.1.1",
+    "electron-builder": "^23.0.3",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.3.3"
+  }
+}
